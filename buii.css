@@ -296,6 +296,7 @@ textarea{
     color: #fff;
     font-size: 1.8rem;
     transition: .5s;
+    cursor: pointer;
 }
 .container>.print-btn:hover{
     scale: 1.2;

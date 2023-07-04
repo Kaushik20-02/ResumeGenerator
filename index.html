@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap theme -->
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="tstt.css">
+    <title>How to create Firebase Facebook Login?</title>
+</head>
+
+<body>
+    <div class="contain">
+
+        <div class="head">
+            <div class="slides fade">
+                <img src=".//1.jpg" >
+              </div>
+              
+              <div class="slides fade">
+                <img src=".//3.jpg" >
+              </div>
+              
+              <div class="slides fade">
+                <img src=".//9.jpg" >
+              </div>
+              <div class="slides fade">
+                <img src=".//2.jpg" >
+              </div>
+            <div class="h1">
+            </div>
+        </div>
+
+        <div class="l2">
+        <h1>Hey there <span>Welcome </span>to my page <span>ʕ•ᴥ•ʔ</span></h1>
+        <div class="authen">
+            <button type="button" id="loginn"
+             class="btn "><i class="fa fa-google "></i>
+              Login </button>
+        </div>
+        </div>
+
+</div>
+</body>
+
+<!-- Login page-->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyD4qqEX46YI2bSZlsZHPug6JtTb10DMawE",
+        authDomain: "loginn-41432.firebaseapp.com",
+        projectId: "loginn-41432",
+        storageBucket: "loginn-41432.appspot.com",
+        messagingSenderId: "1079725003788",
+        appId: "1:1079725003788:web:7c0bca65ef210e5d694a29"
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    //console.log(auth);
+    const provider = new GoogleAuthProvider();
+    console.log(provider);
+
+    document.getElementById("loginn").addEventListener("click", function () {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // The signed-in user info.
+                const user = result.user;
+
+                // This gives you a Google Access Token. You can use it to access the Facebook API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+
+                window.location = "build.html";
+                console.log(user);
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+            });
+    });
+</script>
+
+<!-- sliding img -->
+<script>
+    let slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      let i;
+      let slideshow = document.getElementsByClassName("slides");
+      for (i = 0; i < slideshow.length; i++) {
+        slideshow[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slideshow.length) {slideIndex = 1}    
+
+      slideshow[slideIndex-1].style.display = "block";  
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
+
+</html>

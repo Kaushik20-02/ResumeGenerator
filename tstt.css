@@ -101,3 +101,12 @@ button:hover{
         margin-left: 5rem;
     }
 }
+
+#preloader{
+    background: #f47575 url(Dog.gif) no-repeat center center;
+    margin-top: -10rem;
+    height: 130%;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+}

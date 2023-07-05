@@ -5,12 +5,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap theme -->
     <!-- Add icon library -->
+    <link rel="icon" href=".//44.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="tstt.css">
     <title>Resume Builder</title>
 </head>
 
 <body>
+    <div id="preloader"></div>
     <div class="contain">
 
         <div class="head">
@@ -111,6 +113,13 @@
       slideshow[slideIndex-1].style.display = "block";  
       setTimeout(showSlides, 2000); // Change image every 2 seconds
     }
+</script>
+
+    <!-- Loading img -->
+<script type = "text/javascript">   
+  setTimeout(function(){
+     document.getElementById("preloader").style.display="none";
+  }, 4000);  
 </script>
 
 </html>
